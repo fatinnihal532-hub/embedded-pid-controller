@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "author": "Fatin Nihal Islam",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 40, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "heater", "top": -60, "left": 160,
+      "attrs": { "color": "red", "label": "heater power" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 40, "left": 170,
+      "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "uno:9", "r1:1", "green", [] ],
+    [ "r1:2", "heater:A", "green", [] ],
+    [ "heater:C", "uno:GND.1", "black", [] ]
+  ]
+}
