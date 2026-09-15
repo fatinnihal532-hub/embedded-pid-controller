@@ -6,6 +6,8 @@ loop runs in a browser with no hardware. A matching Python model lets gains be
 swept on the laptop, and an analysis script measures the step response the way
 a control engineer would.
 
+**[Run it in your browser](https://wokwi.com/projects/475219089057232897)** on Wokwi, no hardware required.
+
 ![Step response](docs/step_response.svg)
 
 ## Measured from three runs
