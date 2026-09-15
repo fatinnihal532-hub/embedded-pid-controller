@@ -6,9 +6,9 @@ loop runs in a browser with no hardware. A matching Python model lets gains be
 swept on the laptop, and an analysis script measures the step response the way
 a control engineer would.
 
-![Step response](docs/step_response.png)
+![Step response](docs/step_response.svg)
 
-## Measured from the runs in `data/`
+## Measured from three runs
 
 | Tuning | Rise time (10-90 %) | Overshoot | Settling (±2 %) | Steady-state error |
 |---|---|---|---|---|
@@ -21,6 +21,9 @@ tuned row. The only difference is that the integral term is allowed to keep
 accumulating while the output is already saturated at 100 %. That single
 omission turns a well-behaved loop into one that overshoots by 10 °C and takes
 twice as long to settle.
+
+The three runs are generated files rather than committed data. The commands under
+"Run it" below reproduce them exactly, because the model is deterministic.
 
 ## The two details that separate this from a textbook transcription
 
@@ -104,7 +107,7 @@ python host/simulate.py --kp 6 --ki 0.3 --kd 8 --sp 70 --out data/tuned.csv
 python host/simulate.py --kp 6 --ki 0.3 --kd 8 --sp 70 --no-anti-windup \
     --out data/windup.csv
 python host/analyze.py data/tuned.csv data/windup.csv \
-    --labels "tuned" "windup unguarded" --out docs/step_response.png
+    --labels "tuned" "windup unguarded" --out docs/step_response.svg
 ```
 
 `host/analyze.py` also reads a CSV captured from the real serial port, because
@@ -117,8 +120,8 @@ firmware/sketch.ino   controller, plant model and serial shell
 diagram.json          the simulator circuit (one LED as the heater)
 host/simulate.py      the same equations in Python, for fast gain sweeps
 host/analyze.py       rise time, overshoot, settling time and the plot
-data/*.csv            the three runs behind the table above
-docs/step_response.png
+data/                 where the three runs are written (see data/README.md)
+docs/step_response.svg
 ```
 
 ## Possible extensions
